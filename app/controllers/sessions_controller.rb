@@ -10,14 +10,10 @@ class SessionsController < Devise::SessionsController
         resource: resource
       })
       }, status: :ok
-  #   render json: {jwt: encode_token({
-  #     email: @user.email,
-  # })}
-
   end
 
   def respond_to_on_destroy
-    head :no_content
+    render json: { message: 'logged out successfully!', }
   end
 
 end
