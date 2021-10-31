@@ -1,10 +1,11 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def create
-    build_resource(sign_up_params)
-    resource.save
-    sign_up(resource_name, resource) if resource.persisted?
-
-    render_jsonapi_response(resource)
-  end
+    @user = User.new(sign_up_params)
+    if @user.save
+        render json: { user: resource, message: "Signed up successfully!", token: encode_token({resource: resource})}
+    else
+        render json: { error:resource.errors.full_messages }, status: :unprocessable_entity
+    end
+end
 end
