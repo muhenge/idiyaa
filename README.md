@@ -1,24 +1,51 @@
-# README
+# This an API for authentication system using Ruby on Rails and JWT
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Base URL : https://idiyaa.herokuapp.com
 
-Things you may want to cover:
+## Endpoints
+### Sign up
 
-* Ruby version
+POST: `api/signup`
 
-* System dependencies
+Body json : 
+```
+{
+      "user":{
+          "email":"any@gmail.com",
+          "password":"123456"
+      }
+  }
 
-* Configuration
+  ```
+### Login
 
-* Database creation
+POST `api/signup`
 
-* Database initialization
+Body json :
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+{
+    "user":{
+      "email":"any-email@g.com",
+      "password":""
+    }
+}
 
-* Deployment instructions
+```
+    
+## Response sample
 
-* ...
+```
+{
+  "user": {
+    "id": 1,
+    "email": "helloo@g.com",
+    "created_at": "2021-10-31T19:53:44.621Z",
+    "updated_at": "2021-10-31T19:53:44.621Z"
+  },
+  "message": "You are logged in.",
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJyZXNvdXJjZSI6IiM8VXNlcjoweDAwMDA1NjE1NmFhMTYwYTA-IiwiZXhwIjoxNjM1Nzk3OTM5fQ.mTFUMBKGr7Hx0XRTuB2dNDrFXPkJ8-4aYbWXe6uwWoQ"
+}
+
+```
